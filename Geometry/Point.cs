@@ -14,16 +14,21 @@ namespace Geometry
     
     public class Point : IReflectable
     {
-        private double _x;
-        private double _y;
+        //private double _x;
+        //private double _y;
 
         //public readonly double X ;
         //public readonly double Y ;
-        public double X 
+        public double X
         {
             get
             {
-                return _x;
+                return X;
+            }
+
+            private set
+            {
+                X = value;
             }
         }
 
@@ -31,36 +36,41 @@ namespace Geometry
         {
             get
             {
-                return _y;
+                return Y;
+            }
+
+            private set
+            {
+                Y = value;
             }
         }
 
         public Point(double x)
         {
-            _x = x;
-            _y = 0;
+            X = x;
+            Y = 0;
         }
 
         public Point(double x, double y)
         {
-            _x = x;
-            _y = y;
+            X = x;
+            Y = y;
         }
 
         void IReflectable.ReflectX()
         {
-            _y *= -1;
+            Y *= -1;
         }
 
         void IReflectable.ReflectY()
         {
-            _x *= -1;
+            X *= -1;
         }
 
         protected void ChangeCoordinates(double newX, double newY)
         {
-            _x = newX;
-            _y = newY;
+            X = newX;
+            Y = newY;
         }
 
         public virtual bool IsOnAxis

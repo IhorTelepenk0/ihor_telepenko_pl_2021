@@ -37,6 +37,11 @@ namespace Geometry
             Colour = (PointColour)((Convert.ToInt32(Colour) + 1) % 3);
         }
 
+        public void Normalize()
+        {
+            base.ChangeCoordinates(1,0);
+        }
+
         public override string ToString()
         {
             return string.Format($"({X}, {Y})");
