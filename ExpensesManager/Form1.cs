@@ -80,7 +80,12 @@ namespace ExpensesManager
 
             resultTextBox.Text = $"Number of categories: {numbOfCateg}, total expenses: {totalExpenses}";
 
-            
+            resultTextBox.Text +=
+                $"\r\nCategories: {string.Join(", ", result.GroupBy(x => x.Category).Select(x => x.Key))}";
+            resultTextBox.Text +=
+                $"\r\nDates: {string.Join(", ", result.GroupBy(x => x.Date.ToString("dd/MM/yyyy")).Select(x => x.Key))}";
+            //resultTextBox.Text +=
+            //$"\r\nPrices:{string.Join(", ", result.GroupBy(x => x.Price).Select(x => x.Key))}";
         }
 
         private void pathTextBox_TextChanged(object sender, EventArgs e)
