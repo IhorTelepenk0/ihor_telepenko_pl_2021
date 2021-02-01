@@ -56,5 +56,21 @@ namespace Geometry
         {
             _x *= -1;
         }
+
+        protected void ChangeCoordinates(double newX, double newY)
+        {
+            _x = newX;
+            _y = newY;
+        }
+
+        public virtual bool IsOnAxis
+        {
+            get
+            {
+                if (X == 0 || Y == 0)
+                    return true;
+                else return false;
+            }
+        }
     }
 }

@@ -86,6 +86,18 @@ namespace ExpensesManager
                 $"\r\nDates: {string.Join(", ", result.GroupBy(x => x.Date.ToString("dd/MM/yyyy")).Select(x => x.Key))}";
             //resultTextBox.Text +=
             //$"\r\nPrices:{string.Join(", ", result.GroupBy(x => x.Price).Select(x => x.Key))}";
+
+            var expansesByCategoriesTaken = result
+                .GroupBy(x => x.Category)
+                .Select(z => $"{z.Key} - {z.Sum(y => y.Price)}");
+            resultTextBox.Text += $"\r\nExpenses by category: {string.Join(", ", expansesByCategoriesTaken)}";
+
+            var resultExpensesByDate = ListOfExpenses()
+                .OrderBy(x => x.Date)
+                .GroupBy(x => x.Date)
+                .Select(x => $"{x.Key.ToString("yyyy/MM/dd")} {x.Sum(y => y.Price)}");
+
+            resultTextBox.Text += $"\r\nExpenses by date:\r\n{string.Join("\r\n", resultExpensesByDate)}";
         }
 
         private void pathTextBox_TextChanged(object sender, EventArgs e)
